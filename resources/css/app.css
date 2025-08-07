@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Dancing Script', cursive;
+    --color-primary: #B9375D;
+    --color-background: #EEEEEE;
+    --color-primary-50: #fdf2f8;
+    --color-primary-100: #fce7f3;
+    --color-primary-200: #fbcfe8;
+    --color-primary-300: #f9a8d4;
+    --color-primary-400: #f472b6;
+    --color-primary-500: #B9375D;
+    --color-primary-600: #a1306b;
+    --color-primary-700: #881a5b;
+    --color-primary-800: #701a4b;
+    --color-primary-900: #5e1a3f;
+}
