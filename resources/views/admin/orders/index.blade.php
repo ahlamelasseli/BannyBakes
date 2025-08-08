@@ -11,12 +11,7 @@
             <p class="text-gray-600 mt-2">View and manage customer orders</p>
         </div>
 
-        <!-- Success Message -->
-        @if(session('success'))
-            <div class="mb-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-                {{ session('success') }}
-            </div>
-        @endif
+
 
         <!-- Orders Table -->
         <div class="bg-white rounded-lg shadow overflow-hidden">
@@ -65,9 +60,13 @@
                                     <div class="text-sm text-gray-500">{{ $order->created_at->format('h:i A') }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    <div class="flex space-x-2">
-                                        <a href="{{ route('admin.orders.show', $order) }}"
-                                           class="text-blue-600 hover:text-blue-900">View</a>
+                                    <div class="flex flex-col space-y-2">
+                                        <div class="flex space-x-2">
+                                            <a href="{{ route('admin.orders.show', $order) }}"
+                                               class="text-blue-600 hover:text-blue-900">View</a>
+                                            <a href="{{ route('admin.orders.tracking', $order) }}"
+                                               class="text-green-600 hover:text-green-900">Track</a>
+                                        </div>
                                         <form method="POST" action="{{ route('admin.orders.update-status', $order) }}" class="inline">
                                             @csrf
                                             @method('PATCH')
@@ -75,6 +74,7 @@
                                                     class="text-xs border-gray-300 rounded focus:ring-pink-500 focus:border-pink-500">
                                                 <option value="pending" {{ $order->status === 'pending' ? 'selected' : '' }}>Pending</option>
                                                 <option value="processing" {{ $order->status === 'processing' ? 'selected' : '' }}>Processing</option>
+                                                <option value="packed" {{ $order->status === 'packed' ? 'selected' : '' }}>Packed</option>
                                                 <option value="shipped" {{ $order->status === 'shipped' ? 'selected' : '' }}>Shipped</option>
                                                 <option value="delivered" {{ $order->status === 'delivered' ? 'selected' : '' }}>Delivered</option>
                                                 <option value="cancelled" {{ $order->status === 'cancelled' ? 'selected' : '' }}>Cancelled</option>

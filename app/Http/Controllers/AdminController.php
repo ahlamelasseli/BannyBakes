@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderTracking;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -164,5 +166,42 @@ class AdminController extends Controller
         $order->update(['status' => $request->status]);
 
         return redirect()->back()->with('success', 'Order status updated successfully!');
+    }
+
+    /**
+     * Show order tracking management page
+     */
+    public function orderTracking(Order $order)
+    {
+        $order->load(['trackingUpdates.updatedBy', 'orderItems', 'user']);
+
+        return view('admin.orders.tracking', compact('order'));
+    }
+
+    /**
+     * Add a new tracking update
+     */
+    public function addTrackingUpdate(Request $request, Order $order)
+    {
+        $request->validate([
+            'status' => 'required|in:pending,processing,packed,shipped,delivered',
+            'message' => 'nullable|string|max:500',
+            'location' => 'nullable|string|max:255',
+        ]);
+
+        // Create tracking update
+        OrderTracking::create([
+            'order_id' => $order->id,
+            'status' => $request->status,
+            'message' => $request->message,
+            'location' => $request->location,
+            'status_date' => now(),
+            'updated_by' => Auth::id(),
+        ]);
+
+        // Update order status to match latest tracking
+        $order->update(['status' => $request->status]);
+
+        return redirect()->back()->with('success', 'Tracking update added successfully!');
     }
 }

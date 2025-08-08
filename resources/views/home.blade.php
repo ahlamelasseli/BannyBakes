@@ -3,13 +3,11 @@
 @section('title', 'Home')
 
 @section('content')
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Hero Section -->
-    <div class="text-center py-16">
-        <h1 class="text-6xl font-bold text-gray-800 mb-4">
+    <div class="text-center flex items-center justify-center flex-col py-16 w-full h-screen bg-cover bg-black " style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://t3.ftcdn.net/jpg/05/72/60/20/360_F_572602053_lVt66oxcUaX0Eq20qpvAAfQZOCFfYsJX.jpg') center/cover, #000;">
+        <h1 class="text-6xl font-bold text-white mb-4">
             Welcome to Bunny Bakes
         </h1>
-        <p class="text-2xl text-gray-600 mb-8">
+        <p class="text-2xl text-white mb-8">
             Delicious homemade cookies made with love and the finest ingredients
         </p>
         <a href="{{ route('products.index') }}" class="inline-block px-8 py-4 text-xl font-semibold text-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105" style="background-color: #B9375D;">
@@ -17,6 +15,9 @@
         </a>
     </div>
 
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  
     <!-- Featured Products -->
     @if($products->count() > 0)
         <div class="py-16">
@@ -31,7 +32,7 @@
                             <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover">
                         @else
                             <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-                                <span class="text-6xl">🍪</span>
+                                <span class="text-gray-500 text-lg">No Image</span>
                             </div>
                         @endif
                         
@@ -57,7 +58,7 @@
                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover">
                 @else
                     <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-                        <span class="text-6xl">🍪</span>
+                        <span class="text-6xl"></span>
                     </div>
                 @endif
 
@@ -84,12 +85,12 @@
                                     <button type="submit"
                                             class="w-full py-3 px-4 text-lg font-bold text-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105"
                                             style="background-color: #B9375D;">
-                                        🛒 Add to Cart
+                                        Add to Cart
                                     </button>
                                 </form>
                             @else
                                 <button disabled class="w-full py-3 px-4 text-lg font-bold text-white bg-gray-400 rounded-lg cursor-not-allowed">
-                                    ❌ Unavailable
+                                     Unavailable
                                 </button>
                             @endif
                         @else

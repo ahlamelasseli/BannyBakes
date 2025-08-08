@@ -15,7 +15,6 @@
 
         <!-- Product Details -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Product Image -->
             <div class="space-y-4">
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden">
                     @if($product->image)
@@ -25,7 +24,6 @@
                     @else
                         <div class="w-full h-96 bg-gray-100 flex items-center justify-center">
                             <div class="text-center text-gray-400">
-                                <div class="text-6xl mb-4">🍪</div>
                                 <p class="text-xl">No Image Available</p>
                             </div>
                         </div>
@@ -35,7 +33,6 @@
 
             <!-- Product Information -->
             <div class="space-y-6">
-                <!-- Product Name -->
                 <div>
                     <h1 class="text-4xl font-bold text-gray-800 mb-2">{{ $product->name }}</h1>
                     <div class="flex items-center space-x-2">
@@ -52,13 +49,11 @@
                     </div>
                 </div>
 
-                <!-- Product Description -->
                 <div>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">Description</h3>
                     <p class="text-gray-600 text-lg leading-relaxed">{{ $product->description }}</p>
                 </div>
 
-                <!-- Add to Cart Section -->
                 <div class="bg-gray-50 rounded-xl p-6 space-y-4">
                     @auth
                         @if($product->isAvailable())

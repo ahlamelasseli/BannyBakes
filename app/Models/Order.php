@@ -49,6 +49,22 @@ class Order extends Model
     }
 
     /**
+     * Get all tracking updates for this order.
+     */
+    public function trackingUpdates()
+    {
+        return $this->hasMany(OrderTracking::class)->orderBy('status_date', 'desc');
+    }
+
+    /**
+     * Get the latest tracking update
+     */
+    public function latestTracking()
+    {
+        return $this->hasOne(OrderTracking::class)->latestOfMany('status_date');
+    }
+
+    /**
      * Calculate the total from order items.
      * This adds up all the subtotals from the order items.
      */

@@ -18,12 +18,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Check if user is logged in
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Please login to access this area.');
         }
 
-        // Check if user is admin (with null safety)
         /** @var User|null $user */
         $user = Auth::user();
         if (!$user || !$user->isAdmin()) {

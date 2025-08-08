@@ -14,12 +14,10 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         @forelse($products as $product)
             <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
-                <!-- Product Image -->
                 @if($product->image)
                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover">
                 @else
                     <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-                        <span class="text-6xl">🍪</span>
                     </div>
                 @endif
 
@@ -46,12 +44,12 @@
                                     <button type="submit"
                                             class="w-full py-3 px-4 text-lg font-bold text-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105"
                                             style="background-color: #B9375D;">
-                                        🛒 Add to Cart
+                                        Add to Cart
                                     </button>
                                 </form>
                             @else
                                 <button disabled class="w-full py-3 px-4 text-lg font-bold text-white bg-gray-400 rounded-lg cursor-not-allowed">
-                                    ❌ Unavailable
+                                     Unavailable
                                 </button>
                             @endif
                         @else
@@ -73,7 +71,6 @@
         @empty
             <div class="col-span-full">
                 <div class="bg-white rounded-lg shadow-lg p-12 text-center">
-                    <div class="text-6xl mb-4">🍪</div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4">No cookies available yet!</h3>
                     <p class="text-gray-600 mb-6">
                         Our bakers are working hard to prepare delicious cookies for you.

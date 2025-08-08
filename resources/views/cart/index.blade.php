@@ -15,14 +15,13 @@
             <!-- Empty Cart -->
             <div class="text-center py-16">
                 <div class="mb-8">
-                    <div class="text-8xl mb-4">🍪</div>
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">Your cart is empty</h2>
                     <p class="text-xl text-gray-600 mb-8">Add some delicious cookies to get started!</p>
                 </div>
                 <a href="{{ route('products.index') }}"
                    class="inline-block px-8 py-4 text-xl font-semibold text-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105"
                    style="background-color: #B9375D;">
-                    🐰 Shop Our Cookies
+                     Shop Our Cookies
                 </a>
             </div>
         @else
@@ -41,7 +40,7 @@
                                     <div class="flex items-center space-x-4">
                                         <!-- Product Image -->
                                         <div class="flex-shrink-0">
-                                            <img src="{{ $item->product->image ? asset('storage/' . $item->product->image) : 'https://via.placeholder.com/100x100/B9375D/FFFFFF?text=🍪' }}"
+                                            <img src="{{ $item->product->image ? asset('storage/' . $item->product->image) : 'https://via.placeholder.com/100x100/B9375D/FFFFFF?text=' }}"
                                                  alt="{{ $item->product->name }}"
                                                  class="w-20 h-20 rounded-lg object-cover shadow-md">
                                         </div>
@@ -55,7 +54,6 @@
 
                                         <!-- Quantity Controls & Actions -->
                                         <div class="flex items-center justify-between space-x-4">
-                                            <!-- Quantity Controls -->
                                             <form method="POST" action="{{ route('cart.update', $item) }}" class="flex items-center space-x-2">
                                                 @csrf
                                                 @method('PATCH')

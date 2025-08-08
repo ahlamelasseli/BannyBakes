@@ -66,19 +66,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Cart::class);
     }
 
-    /**
-     * Check if user is an admin.
-     * This is a helper method to check user role.
-     */
     public function isAdmin()
     {
         return $this->role === 'admin';
     }
 
-    /**
-     * Check if user is a customer.
-     * This is a helper method to check user role.
-     */
     public function isCustomer()
     {
         return $this->role === 'customer';
